@@ -67,5 +67,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
+    
+    @IBAction func musicButtonPressed(sender: UIButton) {
+        
+    }
 }
 
