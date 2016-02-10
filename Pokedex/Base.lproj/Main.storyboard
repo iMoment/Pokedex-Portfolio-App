@@ -107,6 +107,7 @@
                                         <connections>
                                             <outlet property="pokemonImage" destination="cE3-nn-OiS" id="yij-21-Wh4"/>
                                             <outlet property="pokemonNameLabel" destination="gax-IL-n18" id="PrT-JH-s3O"/>
+                                            <segue destination="abq-Wt-zdX" kind="show" identifier="PokemonDetailVC" id="RWJ-sv-bXO"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -147,7 +148,43 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="245" y="337"/>
+            <point key="canvasLocation" x="19" y="417"/>
+        </scene>
+        <!--Pokemon DetailVC-->
+        <scene sceneID="hC8-63-dVB">
+            <objects>
+                <viewController id="abq-Wt-zdX" customClass="PokemonDetailVC" customModule="Pokedex" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0zz-7h-f3p"/>
+                        <viewControllerLayoutGuide type="bottom" id="Gd1-FN-dfc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rM1-ZH-9Dg">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z4b-TF-euq">
+                                <rect key="frame" x="164" y="186" width="283" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="T0I-C1-Ldf"/>
+                                    <constraint firstAttribute="width" constant="283" id="kLq-r9-gFf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.18039215689999999" green="0.52941176469999995" blue="0.76470588240000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Z4b-TF-euq" firstAttribute="centerX" secondItem="rM1-ZH-9Dg" secondAttribute="centerX" id="ZFH-Og-En3"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="nameLabel" destination="Z4b-TF-euq" id="iQN-95-mTN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EMj-Vj-jXI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="765" y="417"/>
         </scene>
     </scenes>
     <resources>
