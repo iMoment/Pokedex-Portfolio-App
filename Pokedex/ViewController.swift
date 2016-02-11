@@ -26,7 +26,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         collectionView.delegate = self
         collectionView.dataSource = self
         searchBar.delegate = self
-        searchBar.returnKeyType = UIReturnKeyType.Done
+        searchBar.returnKeyType = UIReturnKeyType.Done  // Changes 'search' text on keyboard to 'Done'
         
         initAudio()
         parsePokemonCSV()
@@ -38,7 +38,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         do {
             musicPlayer = try AVAudioPlayer(contentsOfURL: NSURL(string: path)!)
             musicPlayer.prepareToPlay()
-            musicPlayer.numberOfLoops = -1
+            musicPlayer.numberOfLoops = -1  // Repeats the music on a loop
             musicPlayer.play()
         } catch let err as NSError {
             print(err.debugDescription)
