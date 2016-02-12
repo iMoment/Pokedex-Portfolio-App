@@ -19,6 +19,8 @@ class Pokemon {
     private var _weight: String!
     private var _baseAttack: String!
     private var _nextEvolutionText: String!
+    private var _nextEvolutionId: String!
+    private var _nextEvolutionLevel: String!
     private var _pokemonUrl: String!
     
     var name: String {
@@ -44,7 +46,7 @@ class Pokemon {
             
             if let dict = result.value as? Dictionary<String, AnyObject> {
                 
-                
+                // Description
                 if let desc = dict["descriptions"] as? [Dictionary<String, String>] where desc.count > 0 {
                     
                     if let url = desc[0]["resource_uri"] {
@@ -64,6 +66,7 @@ class Pokemon {
                     self._description = ""
                 }
                 
+                // Type
                 if let types = dict["types"] as? [Dictionary<String, String>] where types.count > 0 {
                     
                     if let type = types[0]["name"] {
@@ -77,32 +80,57 @@ class Pokemon {
                             }
                         }
                     }
+                    print(self._type)
                 } else {
                     self._type = ""
                 }
                 
-                print(self._type)
-                
+                // Defense
                 if let defense = dict["defense"] as? Int {
                     self._defense = "\(defense)"
+                    print(self._defense)
                 }
                 
+                // Height
                 if let height = dict["height"] as? String {
                     self._height = height
+                    print(self._height)
                 }
                 
+                // Weight
                 if let weight = dict["weight"] as? String {
                     self._weight = weight
+                    print(self._weight)
                 }
                 
+                // Base Attack
                 if let attack = dict["attack"] as? Int {
                     self._baseAttack = "\(attack)"
+                    print(self._baseAttack)
                 }
                 
-                print(self._defense)
-                print(self._height)
-                print(self._weight)
-                print(self._baseAttack)
+                // Next Evolution
+                if let evolutions = dict["evolutions"] as? [Dictionary<String, AnyObject>] where evolutions.count > 0 {
+                    
+                    if let to = evolutions[0]["to"] as? String {
+                        if to.rangeOfString("mega") == nil {
+                            if let uri = evolutions[0]["resource_uri"] as? String {
+                                let newStr = uri.stringByReplacingOccurrencesOfString("/api/v1/pokemon/", withString: "")
+                                let num = newStr.stringByReplacingOccurrencesOfString("/", withString: "")
+                                
+                                self._nextEvolutionId = num
+                                self._nextEvolutionText = to
+                                print(self._nextEvolutionId)
+                                print(self._nextEvolutionText)
+                            }
+                        }
+                    }
+                    
+                    if let level = evolutions[0]["level"] as? Int {
+                        self._nextEvolutionLevel = "\(level)"
+                        print(self._nextEvolutionLevel)
+                    }
+                }
             }
         }
     }
