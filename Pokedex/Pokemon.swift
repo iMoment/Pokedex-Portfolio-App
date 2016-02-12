@@ -33,7 +33,7 @@ class Pokemon {
         self._name = name
         self._pokedexId = pokedexId
         
-        _pokemonUrl = "\(URL_BASE)\(URL_POKEMON)\(self._pokedexId)/"
+        self._pokemonUrl = "\(URL_BASE)\(URL_POKEMON)\(self._pokedexId)/"
     }
     
     func downloadPokemonDetails(completed: DownloadComplete) {
@@ -44,15 +44,36 @@ class Pokemon {
             
             if let dict = result.value as? Dictionary<String, AnyObject> {
                 
+                
+                if let desc = dict["descriptions"] as? [Dictionary<String, String>] where desc.count > 0 {
+                    
+                    if let url = desc[0]["resource_uri"] {
+                        let nsurl = NSURL(string: "\(URL_BASE)\(url)")!
+                        Alamofire.request(.GET, nsurl).responseJSON { response in
+                            let descriptionResult = response.result
+                            if let descriptionDictionary = descriptionResult.value as? Dictionary<String, AnyObject> {
+                                if let description = descriptionDictionary["description"] as? String {
+                                    self._description = description
+                                    print(self._description)
+                                }
+                            }
+                            completed()
+                        }
+                    }
+                } else {
+                    self._description = ""
+                }
+                
                 if let types = dict["types"] as? [Dictionary<String, String>] where types.count > 0 {
+                    
                     if let type = types[0]["name"] {
-                        self._type = type
+                        self._type = type.capitalizedString
                     }
                     
                     if types.count > 1 {
                         for var x = 1; x < types.count; x++ {
                             if let type = types[x]["name"] {
-                                self._type! += "/\(type)"
+                                self._type! += "/\(type.capitalizedString)"
                             }
                         }
                     }
