@@ -31,6 +31,42 @@ class Pokemon {
         return _pokedexId
     }
     
+    var description: String {
+        return _description
+    }
+    
+    var type: String {
+        return _type
+    }
+    
+    var defense: String {
+        return _defense
+    }
+    
+    var height: String {
+        return _height
+    }
+    
+    var weight: String {
+        return _weight
+    }
+    
+    var baseAttack: String {
+        return _baseAttack
+    }
+    
+    var nextEvolutionText: String {
+        return _nextEvolutionText
+    }
+    
+    var nextEvolutionId: String {
+        return _nextEvolutionId
+    }
+    
+    var nextEvolutionLevel: String {
+        return _nextEvolutionLevel
+    }
+    
     init(name: String, pokedexId: Int) {
         self._name = name
         self._pokedexId = pokedexId
