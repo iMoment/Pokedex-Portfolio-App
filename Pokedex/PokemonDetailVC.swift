@@ -33,8 +33,12 @@ class PokemonDetailVC: UIViewController {
         mainImage.image = UIImage(named: "\(pokemon.pokedexId)")
         
         pokemon.downloadPokemonDetails { () -> () in
-            
+            self.updateUI()
         }
+    }
+    
+    func updateUI() {
+       
     }
     
     @IBAction func backButtonPressed(sender: UIButton) {
