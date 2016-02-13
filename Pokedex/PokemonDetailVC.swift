@@ -19,7 +19,6 @@ class PokemonDetailVC: UIViewController {
     @IBOutlet weak var weightLabel: UILabel!
     @IBOutlet weak var pokedexIdLabel: UILabel!
     @IBOutlet weak var baseAttackLabel: UILabel!
-    
     @IBOutlet weak var evolutionLabel: UILabel!
     @IBOutlet weak var currentEvolutionImage: UIImageView!
     @IBOutlet weak var nextEvolutionImage: UIImageView!
@@ -60,11 +59,9 @@ class PokemonDetailVC: UIViewController {
                 evolutionLabel.text = "Next Evolution: \(pokemon.nextEvolutionText) LVL \(pokemon.nextEvolutionLevel)"
             }
         }
-        
     }
     
     @IBAction func backButtonPressed(sender: UIButton) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-    
 }

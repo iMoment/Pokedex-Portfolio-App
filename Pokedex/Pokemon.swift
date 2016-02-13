@@ -23,6 +23,7 @@ class Pokemon {
     private var _nextEvolutionLevel: String!
     private var _pokemonUrl: String!
     
+    // Getters
     var name: String {
         return _name
     }
@@ -94,6 +95,7 @@ class Pokemon {
         return _nextEvolutionLevel
     }
     
+    // Constructor
     init(name: String, pokedexId: Int) {
         self._name = name
         self._pokedexId = pokedexId
@@ -119,7 +121,6 @@ class Pokemon {
                             if let descriptionDictionary = descriptionResult.value as? Dictionary<String, AnyObject> {
                                 if let description = descriptionDictionary["description"] as? String {
                                     self._description = description
-                                    print(self._description)
                                 }
                             }
                             completed()
@@ -143,7 +144,6 @@ class Pokemon {
                             }
                         }
                     }
-                    print(self._type)
                 } else {
                     self._type = ""
                 }
@@ -151,25 +151,21 @@ class Pokemon {
                 // Defense
                 if let defense = dict["defense"] as? Int {
                     self._defense = "\(defense)"
-                    print(self._defense)
                 }
                 
                 // Height
                 if let height = dict["height"] as? String {
                     self._height = height
-                    print(self._height)
                 }
                 
                 // Weight
                 if let weight = dict["weight"] as? String {
                     self._weight = weight
-                    print(self._weight)
                 }
                 
                 // Base Attack
                 if let attack = dict["attack"] as? Int {
                     self._baseAttack = "\(attack)"
-                    print(self._baseAttack)
                 }
                 
                 // Next Evolution
@@ -183,15 +179,11 @@ class Pokemon {
                                 
                                 self._nextEvolutionId = num
                                 self._nextEvolutionText = to
-                                print(self._nextEvolutionId)
-                                print(self._nextEvolutionText)
                             }
                         }
                     }
-                    
                     if let level = evolutions[0]["level"] as? Int {
                         self._nextEvolutionLevel = "\(level)"
-                        print(self._nextEvolutionLevel)
                     }
                 }
             }
